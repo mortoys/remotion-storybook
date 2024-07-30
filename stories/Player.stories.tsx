@@ -3,16 +3,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Player } from "@remotion/player";
 
-import { MyComposition } from '@/components/Root'
+import { MyVideo } from '@/components/Slides/Demo'
 
 const VIDEO_WIDTH = 1024;
 const VIDEO_HEIGHT = 1024;
 const VIDEO_FPS = 30;
-const DURATION_IN_FRAMES = VIDEO_FPS * 4;
+// const DURATION_IN_FRAMES = VIDEO_FPS * 4;
+const DURATION_IN_FRAMES = 50 * 3
 
 export const MyPlayer = () => 
     <Player
-        component={MyComposition}
+        component={MyVideo}
         // inputProps={inputProps}
         durationInFrames={DURATION_IN_FRAMES}
         fps={VIDEO_FPS}
@@ -21,7 +22,7 @@ export const MyPlayer = () =>
         style={{
             width: "300px",
         }}
-        // controls
+        controls
         autoPlay
         loop
     />
