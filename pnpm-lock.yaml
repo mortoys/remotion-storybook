@@ -35,9 +35,6 @@ importers:
       remotion:
         specifier: 4.0.188
         version: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      remotion-transition-series:
-        specifier: ^0.0.10
-        version: 0.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(remotion@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       tailwind-merge:
         specifier: ^2.4.0
         version: 2.4.0
@@ -4042,13 +4039,6 @@ packages:
   relateurl@0.2.7:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
-
-  remotion-transition-series@0.0.10:
-    resolution: {integrity: sha512-KuaBadpKo9rqsWC5frSWzX3obSZ/5QK54dlQXSFQJ6V4aSi+s1tXgLuPSgOGbNZhDsxlPyWbKCjbROGC7qb0zA==}
-    peerDependencies:
-      react: '>=17.0.2'
-      react-dom: '>=17.0.2'
-      remotion: '*'
 
   remotion@4.0.188:
     resolution: {integrity: sha512-6U2F572qoT3KtPgLni78PsG/ylPQnHBiftRKl6mP9o6R/uKOLnHE5EE/+mpzGFV9CaRn1xWe++AJCjd/PnFCAg==}
@@ -9237,12 +9227,6 @@ snapshots:
       unist-util-visit: 5.0.0
 
   relateurl@0.2.7: {}
-
-  remotion-transition-series@0.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(remotion@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      remotion: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   remotion@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:

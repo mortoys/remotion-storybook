@@ -18,7 +18,6 @@
     "react": "^18",
     "react-dom": "^18",
     "remotion": "4.0.188",
-    "remotion-transition-series": "^0.0.10",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
