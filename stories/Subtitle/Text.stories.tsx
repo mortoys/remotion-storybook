@@ -27,10 +27,10 @@ const meta = {
     size: { control: 'number' },
     strokeWidth: { control: 'number' },
     strokeColor: { control: 'color' },
-    position: {
-      control: { type: 'radio' },
-      options: ['top', 'middle', 'bottom']
-    },
+    // position: {
+    //   control: { type: 'radio' },
+    //   options: ['top', 'middle', 'bottom']
+    // },
   },
 } satisfies Meta<typeof Component>;
 

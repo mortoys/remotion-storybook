@@ -20,7 +20,7 @@ loadFont({
 // 加粗 斜体 颜色 大小 文字描边的粗细 文字描边的颜色
 // 字幕的位置 顶部 中间 底部
 
-interface TextProps {
+export interface TextProps {
   text: string;
   bold?: boolean;
   italic?: boolean;

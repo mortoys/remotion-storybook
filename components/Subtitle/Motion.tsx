@@ -11,11 +11,11 @@ import type { Boundary } from "./segment";
 
 import { TextBox, Text } from "./Text";
 
-interface MotionProps {
-  data: BoundaryData[];
+export interface MotionProps {
+  data?: BoundaryData[];
 }
 
-interface SubtitleProps {
+export interface SubtitleProps {
   data: Boundary[];
 }
 

@@ -7,7 +7,7 @@ import { VIDEO_FPS } from '@/types/constants'
 
 interface PlayerBookProps {
     component: any
-    inputProps?: Record<string, unknown>
+    inputProps?: any
     frames: number
     height?: number
     width?: number

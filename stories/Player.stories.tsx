@@ -15,8 +15,6 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  args: {
-  },
 } satisfies Meta<typeof Component>;
 
 export default meta;
