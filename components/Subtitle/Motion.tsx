@@ -26,12 +26,13 @@ export const Subtitle = ({ data = [] }: SubtitleProps) => {
     <Sequence
       from={(offset * fps) / 1e3}
       durationInFrames={(duration * fps) / 1e3}
+      key={offset}
     >
       <TextBox>
         {data.map(({ text, duration: segDuration, offset: segOffset }) => (
           (segOffset >= offset && (segOffset + segDuration) <= (offset + duration))
-          ? <Text text={text} size={27} color="green" bold strokeColor="white" strokeWidth={1}/>
-          : <Text text={text} />
+          ? <Text text={text} key={segOffset} size={27} color="green" bold strokeColor="white" strokeWidth={1}/>
+          : <Text text={text} key={segOffset}/>
         ))}
       </TextBox>
     </Sequence>
@@ -47,6 +48,7 @@ export const Screen = ({ data = [] }: MotionProps) => {
     <Sequence
       from={(audio_offset * fps) / 1e3}
       durationInFrames={(duration * fps) / 1e3}
+      key={audio_offset}
     >
       <Subtitle data={groups}></Subtitle>
     </Sequence>

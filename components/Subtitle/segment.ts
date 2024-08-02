@@ -28,9 +28,10 @@ export const splitBoundaries = (boundaries: BoundaryData[]): Screen[] => {
   let currentGroups: Boundary[] = []
   let offset = 0
 
-  for (const index = 0; index < boundaries.length; i++) {
+  for (let index = 0; index < boundaries.length; index++) {
+    const boundary = boundaries[index]
     if (isPunctuation(boundary.text) || boundary.duration === 0) {
-      if (!currentGroups.length) return;
+      if (!currentGroups.length) continue;
 
       result.push({
         groups: currentGroups.slice(),

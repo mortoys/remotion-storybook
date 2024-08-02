@@ -14,7 +14,7 @@ interface PlayerBookProps {
     controls?: boolean
 }
 
-const PlayerBook = ({ component, inputProps={}, frames, height=100, width=600, controls=false }: PlayerBookProps) => {
+const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300, controls=false }: PlayerBookProps) => {
     const ratio = height / width
     // const ratio = 1.4
     const clientHeight = 300
