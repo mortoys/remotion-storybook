@@ -9,7 +9,7 @@ import TransitionComponent from "@/components/Transition/BaseTransition";
 import Player from "../Player";
 
 const Component = () => (
-  <Player component={TransitionComponent} frames={180} />
+  <Player component={TransitionComponent} frames={60*7 - 10*6} />
 );
 
 const meta = {

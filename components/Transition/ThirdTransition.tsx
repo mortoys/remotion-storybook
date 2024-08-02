@@ -7,12 +7,12 @@ import {
 } from "@remotion/transitions";
 import { AbsoluteFill } from "remotion";
 
-import { none } from "@remotion/transitions/none";
-import { fade } from "@remotion/transitions/fade";
-import { slide } from "@remotion/transitions/slide";
-import { wipe } from "@remotion/transitions/wipe";
-import { flip } from "@remotion/transitions/flip";
-import { clockWipe } from "@remotion/transitions/clock-wipe";
+// import { none } from "@remotion/transitions/none";
+// import { fade } from "@remotion/transitions/fade";
+// import { slide } from "@remotion/transitions/slide";
+// import { wipe } from "@remotion/transitions/wipe";
+// import { flip } from "@remotion/transitions/flip";
+// import { clockWipe } from "@remotion/transitions/clock-wipe";
 
 // import { cube } from "@remotion/transitions/";
 
