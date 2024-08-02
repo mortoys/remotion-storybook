@@ -1,18 +1,18 @@
 import React from "React";
 import { useVideoConfig } from "remotion";
 import {
-  linearTiming,
-  springTiming,
+  // linearTiming,
+  // springTiming,
   TransitionSeries,
 } from "@remotion/transitions";
 import { AbsoluteFill } from "remotion";
 
-import { none } from "@remotion/transitions/none";
-import { fade } from "@remotion/transitions/fade";
-import { slide } from "@remotion/transitions/slide";
-import { wipe } from "@remotion/transitions/wipe";
-import { flip } from "@remotion/transitions/flip";
-import { clockWipe } from "@remotion/transitions/clock-wipe";
+// import { none } from "@remotion/transitions/none";
+// import { fade } from "@remotion/transitions/fade";
+// import { slide } from "@remotion/transitions/slide";
+// import { wipe } from "@remotion/transitions/wipe";
+// import { flip } from "@remotion/transitions/flip";
+// import { clockWipe } from "@remotion/transitions/clock-wipe";
 
 // import { cube } from "@remotion/transitions/";
 
@@ -33,7 +33,7 @@ export const TransitionComponent = () => {
       <TransitionSeries.Sequence durationInFrames={60}>
         <Fill color="blue" text="none" />
       </TransitionSeries.Sequence>
-      <TransitionSeries.Transition
+      {/* <TransitionSeries.Transition
         timing={linearTiming({ durationInFrames: 10 })}
         presentation={none()}
       />
@@ -74,7 +74,7 @@ export const TransitionComponent = () => {
       />
       <TransitionSeries.Sequence durationInFrames={60}>
         <Fill color="red" text="end" />
-      </TransitionSeries.Sequence>
+      </TransitionSeries.Sequence> */}
     </TransitionSeries>
   );
 };
