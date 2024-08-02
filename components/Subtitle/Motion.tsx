@@ -1,77 +1,67 @@
 // https://www.remotion.dev/docs/use-video-config
 // import { useVideoConfig } from "remotion";
-import React from 'react';
-import { AbsoluteFill, Img } from "remotion";
-import { cn } from "../../lib/utils"
+import React from "react";
+import { AbsoluteFill, Img, Sequence, useVideoConfig } from "remotion";
+import { cn } from "../../lib/utils";
 
-import { boundaries } from "./data";
-import { splitBoundaries } from './segment'
+import type { BoundaryData } from "./data";
+import { boundaries as dataSample } from "./data";
+import { splitBoundaries } from "./segment";
+import type { Boundary } from "./segment";
 
-const subtitleSegments = splitBoundaries(boundaries);
+import { TextBox, Text } from "./Text";
 
 interface MotionProps {
-  text: string;
-  bold?: boolean;
-  italic?: boolean;
-  color?: string;
-  size?: number;
-  strokeWidth?: number;
-  strokeColor?: string;
-  position?: 'top' | 'middle' | 'bottom';
+  data: BoundaryData[];
 }
 
-export const Motion = ({
-}: MotionProps) => {
-  const positionClass = cn({
-    'top-5': position === 'top',
-    'top-1/2 transform -translate-y-1/2': position === 'middle',
-    'bottom-5': position === 'bottom',
-  });
+interface SubtitleProps {
+  data: Boundary[];
+}
 
-  const textClasses = cn(
-    'absolute w-full text-center',
-    bold && 'font-bold',
-    italic && 'italic',
-    positionClass
-  );
+export const Subtitle = ({ data = [] }: SubtitleProps) => {
+  const { fps } = useVideoConfig();
 
-  const textStyle: React.CSSProperties = {
-    fontFamily: fontFamily,
-    color,
-    fontSize: `${size}px`, // Set font size directly based on size prop
-    // WebkitTextStrokeWidth: `${strokeWidth}px`,
-    // WebkitTextStrokeColor: strokeColor,
-    textShadow: `${strokeWidth}px ${strokeWidth}px 0 ${strokeColor}`,
-  };
-
-  return (
-    <AbsoluteFill className="bg-white flex justify-center items-center">
-			<Sequence from={0} durationInFrames={50}>
-				<Slide title="第一张幻灯片" subtitle="这是第一张幻灯片的字幕" />
-			</Sequence>
-			<Sequence from={50} durationInFrames={50}>
-				<Slide title="第二张幻灯片" subtitle="这是第二张幻灯片的字幕" />
-			</Sequence>
-			<Sequence from={100} durationInFrames={50}>
-				<Slide title="第三张幻灯片" subtitle="这是第三张幻灯片的字幕" />
-			</Sequence>
-		</AbsoluteFill>
-  );
+  return data.map(({ duration, offset }) => (
+    <Sequence
+      from={(offset * fps) / 1e3}
+      durationInFrames={(duration * fps) / 1e3}
+    >
+      <TextBox>
+        {data.map(({ text, duration: segDuration, offset: segOffset }) => (
+          (segOffset >= offset && (segOffset + segDuration) <= (offset + duration))
+          ? <Text text={text} size={27} color="green" bold strokeColor="white" strokeWidth={1}/>
+          : <Text text={text} />
+        ))}
+      </TextBox>
+    </Sequence>
+  ));
 };
 
-const TextComponent = (props: TextProps) => {
+export const Screen = ({ data = [] }: MotionProps) => {
+  const { fps } = useVideoConfig();
+  const screens = splitBoundaries(data);
+  // debugger
+
+  return screens.map(({ groups, duration, audio_offset }) => (
+    <Sequence
+      from={(audio_offset * fps) / 1e3}
+      durationInFrames={(duration * fps) / 1e3}
+    >
+      <Subtitle data={groups}></Subtitle>
+    </Sequence>
+  ));
+};
+
+const MotionComponent = ({ data = dataSample }: MotionProps) => {
   return (
     <AbsoluteFill
       className={`h-screen w-screen flex items-center justify-center bg-gray-200`}
     >
-      <Img
-        src="/Lenna.png"
-        alt="Sample"
-        className="h-full w-full"
-      />
-      <Text {...props} />
+      <Img src="/Lenna.png" alt="Sample" className="h-full w-full" />
+      <Screen data={data} />
     </AbsoluteFill>
   );
 };
 
-export default TextComponent;
+export default MotionComponent;

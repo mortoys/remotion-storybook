@@ -1,11 +1,11 @@
 import type { BoundaryData } from "./data";
 // import { boundaries } from "./data";
 
-type Boundary = BoundaryData & {
+export type Boundary = BoundaryData & {
   offset: number
 }
 
-interface Screen {
+export interface Screen {
   duration: number;
   groups: Boundary[];
   audio_offset: number;
@@ -28,8 +28,10 @@ export const splitBoundaries = (boundaries: BoundaryData[]): Screen[] => {
   let currentGroups: Boundary[] = []
   let offset = 0
 
-  boundaries.forEach((boundary) => {
+  for (const index = 0; index < boundaries.length; i++) {
     if (isPunctuation(boundary.text) || boundary.duration === 0) {
+      if (!currentGroups.length) return;
+
       result.push({
         groups: currentGroups.slice(),
         audio_offset: offset,
@@ -38,19 +40,21 @@ export const splitBoundaries = (boundaries: BoundaryData[]): Screen[] => {
       offset = boundary.audio_offset
       currentGroups = []
     } else {
-      boundary.duration
+      // boundary.duration
       currentGroups.push({
         ... boundary,
         offset: boundary.audio_offset - offset
       })
     }
-  });
+  }
 
-  result.push({
-    groups: currentGroups.slice(),
-    audio_offset: offset,
-    ...accumulation(currentGroups)
-  })
+  if (!!currentGroups.length) {
+    result.push({
+      groups: currentGroups.slice(),
+      audio_offset: offset,
+      ...accumulation(currentGroups)
+    })
+  }
 
   return result;
 };

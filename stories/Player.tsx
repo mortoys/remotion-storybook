@@ -14,8 +14,11 @@ interface PlayerBookProps {
     controls?: boolean
 }
 
-const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300, controls=false }: PlayerBookProps) => {
+const PlayerBook = ({ component, inputProps={}, frames, height=100, width=600, controls=false }: PlayerBookProps) => {
     const ratio = height / width
+    // const ratio = 1.4
+    const clientHeight = 300
+    const clientWidth = clientHeight / ratio
 
     return <Player
         component={component}
@@ -25,8 +28,8 @@ const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300, c
         compositionHeight={height}
         compositionWidth={width}
         style={{
-            width: `${width}px`,
-            height: `${height}px`,
+            width: `${clientWidth}px`,
+            height: `${clientHeight}px`,
         }}
         controls={controls}
         autoPlay
