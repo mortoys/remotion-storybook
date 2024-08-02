@@ -2,11 +2,11 @@ import React from 'react';
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-// import TransitionComponent from "@/components/Transition/Base";
+import TransitionComponent from "@/components/Trans/Base";
 
-export const TransitionComponent = () => {
-  return null
-}
+// export const TransitionComponent = () => {
+//   return null
+// }
 
 import Player from "../Player";
 
