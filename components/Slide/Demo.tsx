@@ -12,7 +12,7 @@
 import React from 'react';
 import { AbsoluteFill, Sequence } from 'remotion';
 
-export const MyVideo: React.FC = () => {
+const MyVideo = () => {
 	return (
 		<AbsoluteFill className="bg-white flex justify-center items-center">
 			<Sequence from={0} durationInFrames={50}>
@@ -36,3 +36,5 @@ const Slide: React.FC<{ title: string, subtitle: string }> = ({ title, subtitle 
 		</AbsoluteFill>
 	);
 };
+
+export default MyVideo
