@@ -1,5 +1,5 @@
 import React from "React";
-import { useVideoConfig } from "remotion";
+// import { useVideoConfig } from "remotion";
 // import {
   // linearTiming,
   // springTiming,
@@ -16,18 +16,18 @@ import { AbsoluteFill } from "remotion";
 
 // import { cube } from "@remotion/transitions/";
 
-const Fill = ({ color, text }: { color: string, text: string }) => {
-  return (
-    <AbsoluteFill
-      style={{ backgroundColor: color }}
-      className="flex justify-center items-center"
-    >
-      <div className="text-5xl text-white">{ text }</div>
-    </AbsoluteFill>
-  );
-};
+// const Fill = ({ color, text }: { color: string, text: string }) => {
+//   return (
+//     <AbsoluteFill
+//       style={{ backgroundColor: color }}
+//       className="flex justify-center items-center"
+//     >
+//       <div className="text-5xl text-white">{ text }</div>
+//     </AbsoluteFill>
+//   );
+// };
 export const TransitionComponent = () => {
-  const { width, height } = useVideoConfig();
+  // const { width, height } = useVideoConfig();
   return (
     null
     // <TransitionSeries>

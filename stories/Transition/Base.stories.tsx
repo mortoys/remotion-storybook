@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import TransitionComponent from "@/components/Transition/BaseTransition";
+import TransitionComponent from "@/components/Transition/Base";
 
 import Player from "../Player";
 
