@@ -12,6 +12,7 @@
     "@remotion/cli": "4.0.188",
     "@remotion/fonts": "4.0.188",
     "@remotion/player": "4.0.188",
+    "@remotion/transitions": "4.0.188",
     "clsx": "^2.1.1",
     "next": "14.2.2",
     "react": "^18",

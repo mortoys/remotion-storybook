@@ -17,6 +17,9 @@ importers:
       '@remotion/player':
         specifier: 4.0.188
         version: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@remotion/transitions':
+        specifier: 4.0.188
+        version: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1357,6 +1360,9 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@remotion/paths@4.0.188':
+    resolution: {integrity: sha512-b45G8JVG/5OSI0ZtZut2bsMo+BxidhPT+CX0DrQIVtxvCHpZFO9CpipAoGWE8tEIskJ/SU98NuKOIIfTeU/dtw==}
+
   '@remotion/player@4.0.188':
     resolution: {integrity: sha512-5hfUpv7QzuJXeIZQdxabsde+upX2+QmSZ3x4qmCN3ciBITDRfgpGgadtL/QTI6Rlvv9t1GONINNl5wsGdDBtyg==}
     peerDependencies:
@@ -1365,6 +1371,12 @@ packages:
 
   '@remotion/renderer@4.0.188':
     resolution: {integrity: sha512-4KfmbrxXYOAcCWPxSHV7aIdej5gl2KIQaGMFCbxgkhuXmQUBuWaOLC/fUBmj+Ac2oSEjHZzXIIKwWVBG69f9yQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@remotion/shapes@4.0.188':
+    resolution: {integrity: sha512-h0lZEnTYM0z8dz4x+mfHBROEVIWqcEHNoVkHqGKXXw0TyP84LpW/eubFOdh5AKrafuhyrePLF5az+C1t1i0XCw==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -1380,6 +1392,12 @@ packages:
 
   '@remotion/studio@4.0.188':
     resolution: {integrity: sha512-nMNOnWl/eNWWN0Ngv9Liyrno4cznqpGgwuqCYw13Z8OJL1e4Fx6+6jW8mZC2qxtcLTae5vqmkfw5ZGCdzY+wmA==}
+
+  '@remotion/transitions@4.0.188':
+    resolution: {integrity: sha512-PCmho++acUEJ/KH64nbUBjEkEcQLQYHVSkV9xse2xRkfMeBhPNt8idfaTd1klK/ywMtpc6peuYuFBqn3eeo0ZA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -6013,6 +6031,8 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       remotion: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
+  '@remotion/paths@4.0.188': {}
+
   '@remotion/player@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
@@ -6041,6 +6061,12 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+
+  '@remotion/shapes@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@remotion/paths': 4.0.188
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@remotion/streaming@4.0.188': {}
 
@@ -6090,6 +6116,14 @@ snapshots:
       - react-dom
       - supports-color
       - utf-8-validate
+
+  '@remotion/transitions@4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@remotion/paths': 4.0.188
+      '@remotion/shapes': 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      remotion: 4.0.188(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@sinclair/typebox@0.27.8': {}
 
