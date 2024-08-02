@@ -1,6 +1,6 @@
 // https://www.remotion.dev/docs/use-video-config
 // import { useVideoConfig } from "remotion";
-import React from 'react';
+import React, { useLayoutEffect, useState, useRef } from 'react';
 import { AbsoluteFill, Img } from "remotion";
 import { cn } from "../../lib/utils"
 
@@ -28,11 +28,43 @@ interface TextProps {
   size?: number;
   strokeWidth?: number;
   strokeColor?: string;
-  position?: 'top' | 'middle' | 'bottom';
 }
 
+type TextBoxProps = Omit<TextProps, 'text'> & {
+  position?: 'top' | 'middle' | 'bottom';
+  children: React.ReactElement<typeof Text> | React.ReactElement<typeof Text>[];
+};
+
 export const Text = ({
-  text = '',
+  text,
+  bold = false,
+  italic = false,
+  color = 'white',
+  size = 20,
+  strokeWidth = 2,
+  strokeColor = 'black',
+}: TextProps) => {
+  const textClasses = cn(
+    'text-center',
+    bold && 'font-bold',
+    italic && 'italic',
+  );
+
+  const textStyle: React.CSSProperties = {
+    fontFamily: fontFamily,
+    color,
+    fontSize: `${size}px`,
+    textShadow: `${strokeWidth}px ${strokeWidth}px 0 ${strokeColor}`,
+  };
+
+  return (
+    <span className={textClasses} style={textStyle}>
+      {text}
+    </span>
+  );
+};
+
+export const TextBox = ({
   bold = false,
   italic = false,
   color = 'white',
@@ -40,49 +72,65 @@ export const Text = ({
   strokeWidth = 2,
   strokeColor = 'black',
   position = 'bottom',
-}: TextProps) => {
-  const positionClass = cn({
-    'top-5': position === 'top',
-    'top-1/2 transform -translate-y-1/2': position === 'middle',
-    'bottom-5': position === 'bottom',
-  });
+  children
+}: TextBoxProps) => {
+  const [textHeight, setTextHeight] = useState<number>(0);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (textRef.current) {
+      setTextHeight(textRef.current.clientHeight);
+    }
+  }, [children]);
+
+  const positionStyle: React.CSSProperties = {
+    top: position === 'top' ? '5px' : position === 'middle' ? '50%' : 'auto',
+    transform: position === 'middle' ? 'translateY(-50%)' : 'none',
+    bottom: position === 'bottom' ? '5px' : 'auto',
+  };
 
   const textClasses = cn(
     'absolute w-full text-center',
     bold && 'font-bold',
     italic && 'italic',
-    positionClass
   );
 
   const textStyle: React.CSSProperties = {
     fontFamily: fontFamily,
     color,
-    fontSize: `${size}px`, // Set font size directly based on size prop
-    // WebkitTextStrokeWidth: `${strokeWidth}px`,
-    // WebkitTextStrokeColor: strokeColor,
+    fontSize: `${size}px`,
     textShadow: `${strokeWidth}px ${strokeWidth}px 0 ${strokeColor}`,
+    ... positionStyle,
   };
 
   return (
-    <div className={textClasses} style={textStyle}>
-      {text}
-    </div>
+    <AbsoluteFill className={textClasses} style={{
+        ...textStyle, 
+        height: textHeight
+      }}>
+      <div ref={textRef}>
+        {children}
+      </div>
+    </AbsoluteFill>
   );
 };
 
-const TextComponent = (props: TextProps) => {
+const TextComponent = (props: TextBoxProps & TextProps) => {
   return (
-    <AbsoluteFill
-      className={`h-screen w-screen flex items-center justify-center bg-gray-200`}
-    >
+    <AbsoluteFill className={`h-screen w-screen flex items-center justify-center bg-gray-200`}>
       <Img
         src="/Lenna.png"
         alt="Sample"
         className="h-full w-full"
       />
-      <Text {...props} />
+      <TextBox {...props}>
+        <Text {...props} />
+        <Text {...props} />
+        <Text {...props} />
+      </TextBox>
     </AbsoluteFill>
   );
 };
+
 
 export default TextComponent;

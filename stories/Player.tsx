@@ -11,9 +11,10 @@ interface PlayerBookProps {
     frames: number
     height?: number
     width?: number
+    controls?: boolean
 }
 
-const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300 }: PlayerBookProps) => {
+const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300, controls=false }: PlayerBookProps) => {
     const ratio = height / width
 
     return <Player
@@ -27,7 +28,7 @@ const PlayerBook = ({ component, inputProps={}, frames, height=300, width=300 }:
             width: `${width}px`,
             height: `${height}px`,
         }}
-        controls
+        controls={controls}
         autoPlay
         loop
     />

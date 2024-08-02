@@ -12,13 +12,6 @@ const Component = (inputProps: TextProps) => (
   <Player component={TextComponent} inputProps={inputProps} frames={30} />
 );
 
-// color: rgba(255, 255, 255, 0.96);
-
-// border: 2.92069px solid rgba(0, 0, 0, 0.96);
-// font-weight: 600;
-// font-size: 27.2598px;
-// line-height: 31px;
-
 const meta = {
   title: "Subtitle/Text",
   component: Component,
