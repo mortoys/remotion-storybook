@@ -3,14 +3,15 @@ import React from 'react';
 import type { Meta, StoryObj } from "@storybook/react";
 
 // import TransitionComponent from "@/components/Transition/Base";
-import ImageComponent from "@/components/Slide/Image";
-import { ImageProps } from "@/components/Slide/Image";
-import type { Mode } from "@/components/Slide/Image";
+
+export const TransitionComponent = () => {
+  return null
+}
 
 import Player from "../Player";
 
-const Component = (inputProps: ImageProps) => (
-  <Player component={ImageComponent} inputProps={inputProps} frames={30} />
+const Component = () => (
+  <Player component={TransitionComponent} frames={60*7 - 10*6} />
 );
 
 const meta = {
@@ -26,7 +27,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Short: Story = {
-  args: {
-    mode: "none",
-  }
 };
