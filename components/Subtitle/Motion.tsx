@@ -31,8 +31,8 @@ export const Subtitle = ({ data = [] }: SubtitleProps) => {
       <TextBox>
         {data.map(({ text, duration: segDuration, offset: segOffset }) => (
           (segOffset >= offset && (segOffset + segDuration) <= (offset + duration))
-          ? <Text text={text} key={segOffset} size={27} color="green" bold strokeColor="white" strokeWidth={1}/>
-          : <Text text={text} key={segOffset}/>
+          ? <Text text={text} key={segOffset} size={21} color="green" bold strokeColor="white" strokeWidth={1}/>
+          : <Text text={text} key={segOffset} size={18} />
         ))}
       </TextBox>
     </Sequence>
@@ -42,7 +42,6 @@ export const Subtitle = ({ data = [] }: SubtitleProps) => {
 export const Screen = ({ data = [] }: MotionProps) => {
   const { fps } = useVideoConfig();
   const screens = splitBoundaries(data);
-  // debugger
 
   return screens.map(({ groups, duration, audio_offset }) => (
     <Sequence

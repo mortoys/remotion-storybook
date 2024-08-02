@@ -41,9 +41,13 @@ export const splitBoundaries = (boundaries: BoundaryData[]): Screen[] => {
       offset = boundary.audio_offset
       currentGroups = []
     } else {
-      // boundary.duration
+      const duration = index + 1 < boundaries.length
+        ? boundaries[index+1].audio_offset - boundaries[index].audio_offset
+        : boundary.duration
+
       currentGroups.push({
         ... boundary,
+        duration,
         offset: boundary.audio_offset - offset
       })
     }
