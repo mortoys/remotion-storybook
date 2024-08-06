@@ -31,8 +31,8 @@ export const Subtitle = ({ data = [] }: SubtitleProps) => {
       <TextBox>
         {data.map(({ text, duration: segDuration, offset: segOffset }) => (
           (segOffset >= offset && (segOffset + segDuration) <= (offset + duration))
-          ? <Text text={text} key={segOffset} size={21} color="green" bold strokeColor="white" strokeWidth={1}/>
-          : <Text text={text} key={segOffset} size={18} />
+          ? <Text text={text} key={segOffset} size={18} color="green" bold strokeColor="black" strokeWidth={1}/>
+          : <Text text={text} key={segOffset} size={18} strokeColor="black" strokeWidth={0}/>
         ))}
       </TextBox>
     </Sequence>
