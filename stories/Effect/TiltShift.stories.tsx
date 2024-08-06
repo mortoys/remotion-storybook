@@ -32,61 +32,61 @@ type Story = StoryObj<typeof meta>;
 
 export const S0: Story = {
     args: {
-        effect: effects[Object.keys(effects)[0]]
+        ... effects[Object.keys(effects)[0]]
     }
 }
 export const S1: Story = {
     args: {
-        effect: effects[Object.keys(effects)[1]]
+        ... effects[Object.keys(effects)[1]]
     }
 }
 export const S2: Story = {
     args: {
-        effect: effects[Object.keys(effects)[2]]
+        ... effects[Object.keys(effects)[2]]
     }
 }
 export const S3: Story = {
     args: {
-        effect: effects[Object.keys(effects)[3]]
+        ... effects[Object.keys(effects)[3]]
     }
 }
 export const S4: Story = {
     args: {
-        effect: effects[Object.keys(effects)[4]]
+        ... effects[Object.keys(effects)[4]]
     }
 }
 export const S5: Story = {
     args: {
-        effect: effects[Object.keys(effects)[5]]
+        ... effects[Object.keys(effects)[5]]
     }
 }
 export const S6: Story = {
     args: {
-        effect: effects[Object.keys(effects)[6]]
+        ... effects[Object.keys(effects)[6]]
     }
 }
 export const S7: Story = {
     args: {
-        effect: effects[Object.keys(effects)[7]]
+        ... effects[Object.keys(effects)[7]]
     }
 }
 export const S8: Story = {
     args: {
-        effect: effects[Object.keys(effects)[8]]
+        ... effects[Object.keys(effects)[8]]
     }
 }
 export const S9: Story = {
     args: {
-        effect: effects[Object.keys(effects)[9]]
+        ... effects[Object.keys(effects)[9]]
     }
 }
 export const S10: Story = {
     args: {
-        effect: effects[Object.keys(effects)[10]]
+        ... effects[Object.keys(effects)[10]]
     }
 }
 // export const S11: Story = {
 //     args: {
-//         effect: effects[Object.keys(effects)[11]]
+//         ... effects[Object.keys(effects)[11]]
 //     }
 // }

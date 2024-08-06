@@ -232,11 +232,13 @@ export const effects: {[name:string]: EffectProps} = {
   },
 };
 
-export interface TiltShiftEffectDemoProps {
-    effect: EffectProps
-}
+// export interface TiltShiftEffectDemoProps {
+//     effect: EffectProps
+// }
 
-const TiltShiftEffectApp = ({ effect }: TiltShiftEffectDemoProps) => {
+type TiltShiftEffectDemoProps = EffectProps
+
+const TiltShiftEffectApp = (effect: EffectProps) => {
   return (
     <AbsoluteFill>
       <TiltShiftEffect effect={effect}>
