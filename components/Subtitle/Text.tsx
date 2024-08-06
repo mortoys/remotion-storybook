@@ -16,18 +16,18 @@ const fontFamily = '"NotoSansSC", "Poppins"';
 // 加粗 斜体 颜色 大小 文字描边的粗细 文字描边的颜色
 // 字幕的位置 顶部 中间 底部
 
-export interface TextProps {
-  text: string;
-  // bold?: boolean;
+export interface TextStyleProps {
   weight?: number
   italic?: boolean;
   color?: string;
-  size?: number;
   strokeWidth?: number;
   strokeColor?: string;
 }
 
-type TextBoxProps = Omit<TextProps, "text"> & {
+export type TextElementProps = TextStyleProps & { text:string }
+
+export type TextBoxProps = TextStyleProps & {
+  size?: number;
   position?: "top" | "middle" | "bottom";
   children: React.ReactElement<typeof Text> | React.ReactElement<typeof Text>[];
 };
@@ -40,19 +40,26 @@ export const Text = ({
   size,
   strokeWidth,
   strokeColor,
-}: TextProps) => {
+}: TextElementProps) => {
   const textClasses = cn(
     "text-center",
-    // bold && "font-bold",
+    "text-stroke",
     italic && "italic"
   );
+
+  const customStyle = {
+    '--text-content': `"${text}"`,
+    '--text-color': color,
+    '--stroke-color': strokeColor,
+    '--stroke-width': `${strokeWidth}px`,
+  };
 
   const textStyle: React.CSSProperties = {
     fontFamily: fontFamily,
     fontWeight: weight,
     color,
     fontSize: `${size}px`,
-    textShadow: `0 0 ${strokeWidth}px ${strokeColor}`,
+    // textShadow: `0 0 ${strokeWidth}px ${strokeColor}`,
     // WebkitTextStroke: `${strokeWidth}px ${strokeColor}`,
     // WebkitTextFillColor: color,
     // WebkitTextStrokeColor: strokeColor,
@@ -60,7 +67,7 @@ export const Text = ({
   };
 
   return (
-    <span className={textClasses} style={textStyle}>
+    <span className={textClasses} style={{...textStyle, ...customStyle}}>
       {text}
     </span>
   );
@@ -102,7 +109,7 @@ export const TextBox = ({
     fontWeight: weight,
     color,
     fontSize: `${size}px`,
-    textShadow: `0 0 ${strokeWidth}px ${strokeColor}`,
+    // textShadow: `0 0 ${strokeWidth}px ${strokeColor}`,
     ...positionStyle,
   };
 
@@ -119,7 +126,7 @@ export const TextBox = ({
   );
 };
 
-const TextComponent = (props: TextBoxProps & TextProps) => {
+const TextComponent = (props: TextBoxProps & TextElementProps) => {
   return (
     <AbsoluteFill
       className={`h-screen w-screen flex items-center justify-center bg-gray-200`}

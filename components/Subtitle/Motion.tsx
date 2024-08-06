@@ -30,14 +30,14 @@ export const Subtitle = ({ data = [] }: SubtitleProps) => {
       durationInFrames={(duration * fps) / 1e3}
       key={offset}
     >
-      <TextBox size={18} weight={600} strokeColor="black" strokeWidth={1}>
+      <TextBox size={18} weight={500} strokeColor="black" strokeWidth={1}>
         {data.filter(
           ({ text, duration: segDuration, offset: segOffset }) => 
             moving ? (segOffset + segDuration) <= (offset + duration) : true
         ).map(({ text, duration: segDuration, offset: segOffset }) => (
           (segOffset >= offset && (segOffset + segDuration) <= (offset + duration))
-          ? <Text text={text} key={segOffset} color="green" strokeColor="black" strokeWidth={1}/>
-          : <Text text={text} key={segOffset} strokeColor="black"/>
+          ? <Text text={text} key={segOffset} color="#169e00" strokeColor="#444" strokeWidth={2}/>
+          : <Text text={text} key={segOffset} strokeColor="#444" strokeWidth={1}/>
         ))}
       </TextBox>
     </Sequence>

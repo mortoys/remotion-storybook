@@ -2,3 +2,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.text-stroke {
+    color: var(--text-color, #fff);
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.text-stroke:after, .text-stroke:before {
+    content: var(--text-content, "");
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    /* -webkit-text-stroke: .2em #000; */
+    -webkit-text-stroke: var(--stroke-width, 0px) var(--stroke-color, #000);
+}
+
+.text-stroke:before {
+    left: 0;
+    top: 0;
+}
+
+.text-stroke:after {
+    /* left: .05em; */
+    /* top: .05em; */
+    left: 1px;
+    top: 1px;
+}

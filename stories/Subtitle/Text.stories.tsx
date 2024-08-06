@@ -3,12 +3,12 @@ import React from 'react';
 import type { Meta, StoryObj } from "@storybook/react";
 
 import TextComponent from "@/components/Subtitle/Text";
-import { TextProps } from "@/components/Subtitle/Text";
+import { TextElementProps } from "@/components/Subtitle/Text";
 // import type { Mode } from "@/components/Subtitle/Text";
 
 import Player from "../Player";
 
-const Component = (inputProps: TextProps) => (
+const Component = (inputProps: TextElementProps) => (
   <Player component={TextComponent} inputProps={inputProps} frames={30} />
 );
 
@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 export const En: Story = {
   args: {
     size: 20,
-    weight: 800,
+    weight: 600,
     strokeWidth: 2,
     text: 'Artificial Intelligence (AI)'
   },
@@ -48,7 +48,7 @@ export const En: Story = {
 export const Cn: Story = {
   args: {
     size: 20,
-    weight: 800,
+    weight: 600,
     text: '灰色的使用可以在鲜艳的数据展示中带来平衡和冷静'
   },
 };
@@ -56,7 +56,7 @@ export const Cn: Story = {
 export const Mix: Story = {
   args: {
     size: 20,
-    weight: 800,
+    weight: 600,
     text: '这是一个测试 subtitle 的英文混合。'
   },
 };
