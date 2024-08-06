@@ -3,32 +3,32 @@ import { staticFile } from 'remotion';
 
 const loadFonts = async () => {
   // 加载 Noto Sans SC 变量字体
-//   await loadFont({
-//     family: 'NotoSansSC',
-//     url: staticFile('/fonts/NotoSansSC-VariableFont_wght.ttf'),
-//     weight: '100 900', // 可变字体的权重范围
-//   });
+  await loadFont({
+    family: 'NotoSansSC',
+    url: staticFile('/fonts/NotoSansSC-VariableFont_wght.ttf'),
+    weight: '100 900', // 可变字体的权重范围
+  });
 
-  const notoSansSCFonts = [
-    { weight: '100', style: 'normal', file: 'NotoSansSC-Thin.ttf' },
-    { weight: '200', style: 'normal', file: 'NotoSansSC-ExtraLight.ttf' },
-    { weight: '300', style: 'normal', file: 'NotoSansSC-Light.ttf' },
-    { weight: '400', style: 'normal', file: 'NotoSansSC-Regular.ttf' },
-    { weight: '500', style: 'normal', file: 'NotoSansSC-Medium.ttf' },
-    { weight: '600', style: 'normal', file: 'NotoSansSC-SemiBold.ttf' },
-    { weight: '700', style: 'normal', file: 'NotoSansSC-Bold.ttf' },
-    { weight: '800', style: 'normal', file: 'NotoSansSC-ExtraBold.ttf' },
-    { weight: '900', style: 'normal', file: 'NotoSansSC-Black.ttf' },
-  ];
+  // const notoSansSCFonts = [
+  //   { weight: '100', style: 'normal', file: 'NotoSansSC-Thin.ttf' },
+  //   { weight: '200', style: 'normal', file: 'NotoSansSC-ExtraLight.ttf' },
+  //   { weight: '300', style: 'normal', file: 'NotoSansSC-Light.ttf' },
+  //   { weight: '400', style: 'normal', file: 'NotoSansSC-Regular.ttf' },
+  //   { weight: '500', style: 'normal', file: 'NotoSansSC-Medium.ttf' },
+  //   { weight: '600', style: 'normal', file: 'NotoSansSC-SemiBold.ttf' },
+  //   { weight: '700', style: 'normal', file: 'NotoSansSC-Bold.ttf' },
+  //   { weight: '800', style: 'normal', file: 'NotoSansSC-ExtraBold.ttf' },
+  //   { weight: '900', style: 'normal', file: 'NotoSansSC-Black.ttf' },
+  // ];
 
-  for (const font of notoSansSCFonts) {
-    await loadFont({
-      family: 'NotoSansSC',
-      url: staticFile(`/fonts/NotoSansSC/${font.file}`),
-      weight: font.weight,
-      style: font.style,
-    });
-  }
+  // for (const font of notoSansSCFonts) {
+  //   await loadFont({
+  //     family: 'NotoSansSC',
+  //     url: staticFile(`/fonts/NotoSansSC/${font.file}`),
+  //     weight: font.weight,
+  //     style: font.style,
+  //   });
+  // }
 
   // 加载 Poppins 静态字体
   const poppinsFonts = [
