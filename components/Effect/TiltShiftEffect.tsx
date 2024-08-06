@@ -205,7 +205,7 @@ export const effects: {[name:string]: EffectProps} = {
   },
   tiltLeft: {
     tilt: -10,
-    zoom: 1,
+    zoom: 1.5,
     shiftX: 0,
     shiftY: 0,
     blur: 0,
@@ -217,7 +217,7 @@ export const effects: {[name:string]: EffectProps} = {
   },
   tiltRight: {
     tilt: 10,
-    zoom: 1,
+    zoom: 1.5,
     shiftX: 0,
     shiftY: 0,
     blur: 0,

@@ -30,57 +30,57 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const S0: Story = {
+export const focusCenter: Story = {
     args: {
         ... effects[Object.keys(effects)[0]]
     }
 }
-export const S1: Story = {
+export const leftShiftBlur: Story = {
     args: {
         ... effects[Object.keys(effects)[1]]
     }
 }
-export const S2: Story = {
+export const rightShiftBrighten: Story = {
     args: {
         ... effects[Object.keys(effects)[2]]
     }
 }
-export const S3: Story = {
+export const vintage: Story = {
     args: {
         ... effects[Object.keys(effects)[3]]
     }
 }
-export const S4: Story = {
+export const highContrast: Story = {
     args: {
         ... effects[Object.keys(effects)[4]]
     }
 }
-export const S5: Story = {
+export const coolTone: Story = {
     args: {
         ... effects[Object.keys(effects)[5]]
     }
 }
-export const S6: Story = {
+export const sepiaEffect: Story = {
     args: {
         ... effects[Object.keys(effects)[6]]
     }
 }
-export const S7: Story = {
+export const dramaticZoom: Story = {
     args: {
         ... effects[Object.keys(effects)[7]]
     }
 }
-export const S8: Story = {
+export const tiltLeft: Story = {
     args: {
         ... effects[Object.keys(effects)[8]]
     }
 }
-export const S9: Story = {
+export const tiltRight: Story = {
     args: {
         ... effects[Object.keys(effects)[9]]
     }
 }
-export const S10: Story = {
+export const blurZoom: Story = {
     args: {
         ... effects[Object.keys(effects)[10]]
     }
