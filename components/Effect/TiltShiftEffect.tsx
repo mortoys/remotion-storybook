@@ -15,6 +15,13 @@ interface EffectProps {
   hueRotate: number;
 }
 
+// interface SpringProps {
+//     overshootClamping: number
+//     mass: number
+//     damping: number
+//     stiffness: number
+// }
+
 const applyTiltShiftEffect = ({
   tilt,
   zoom,
@@ -34,11 +41,13 @@ const applyTiltShiftEffect = ({
 
 interface TiltShiftEffectProps {
   effect: EffectProps;
+//   spring: SpringProps;
   children: React.ReactNode;
 }
 
 export const TiltShiftEffect: React.FC<TiltShiftEffectProps> = ({
   effect,
+//   spring,
   children,
 }) => {
   const frame = useCurrentFrame();
