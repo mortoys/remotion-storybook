@@ -13,9 +13,7 @@ import {
   TransitionSeries,
 } from "@remotion/transitions";
 
-interface PresentationProps {
-  slides: inputProps;
-}
+type PresentationProps = inputProps;
 
 const Presentation: React.FC<PresentationProps> = ({ slides }) => {
   const { fps } = useVideoConfig();
@@ -25,15 +23,19 @@ const Presentation: React.FC<PresentationProps> = ({ slides }) => {
     <AbsoluteFill>
       <TransitionSeries>
         {slides.map((slide, index) => (
-          <Transition key={index} duration={slide.duration} type={slide.transition}>
+          <Transition
+            key={index}
+            duration={slide.duration}
+            type={slide.transition}
+          >
             <Effect effect={slide.effect}>
-                <Img src={slide.image} alt={`Slide ${index + 1}`} />
-              </Effect>
+              <Img src={slide.image} alt={`Slide ${index + 1}`} />
+            </Effect>
           </Transition>
         ))}
       </TransitionSeries>
 
-      {slides.map((slide, index) => (
+      {/* {slides.map((slide, index) => (
         <Sequence
           key={index}
           from={index * slide.duration * fps}
@@ -43,7 +45,7 @@ const Presentation: React.FC<PresentationProps> = ({ slides }) => {
           <Audio src={slide.audio} />
 
         </Sequence>
-      ))}
+      ))} */}
     </AbsoluteFill>
   );
 };

@@ -1,4 +1,4 @@
-import { BoundaryData } from "@/components/Subtitle/data";
+import { BoundaryData } from "@/components/Subtitle/Motion";
 
 import type { EffectType } from '@/components/Effect/effects'
 import type { TransitionType } from '@/components/Transition/transitions'
@@ -12,4 +12,6 @@ interface Screen {
   image: string;
 }
 
-export type inputProps = Screen[];
+export type inputProps = {
+  slides: Screen[]
+}

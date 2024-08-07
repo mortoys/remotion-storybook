@@ -33,7 +33,7 @@ const Transition: React.FC<TransitionProps> = ({
   });
 
   return (
-    <>
+    <React.Fragment>
       <TransitionSeries.Sequence durationInFrames={durationToFrames(duration)}>
         {children}
       </TransitionSeries.Sequence>
@@ -43,7 +43,7 @@ const Transition: React.FC<TransitionProps> = ({
           typeof func === "function" ? func({ width, height }) : func
         }
       />
-    </>
+    </React.Fragment>
   );
 };
 
