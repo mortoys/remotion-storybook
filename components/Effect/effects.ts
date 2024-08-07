@@ -1,0 +1,150 @@
+
+import type { EffectProps } from './TiltShiftEffect'
+
+export type EffectType =
+  | "focus-center"
+  | "left-shift-blur"
+  | "right-shift-brighten"
+  | "vintage"
+  | "high-contrast"
+  | "cool-tone"
+  | "sepia-effect"
+  | "dramatic-zoom"
+  | "tilt-left"
+  | "tilt-right"
+  | "blur-zoom";
+
+export const effects: { [name in EffectType]: EffectProps } = {
+  "focus-center": {
+    tilt: 0,
+    zoom: 1.5,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "left-shift-blur": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: -50,
+    shiftY: 0,
+    blur: 5,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "right-shift-brighten": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: 50,
+    shiftY: 0,
+    blur: 0,
+    brightness: 150,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "vintage": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 110,
+    contrast: 90,
+    saturate: 80,
+    sepia: 30,
+    hueRotate: 0,
+  },
+  "high-contrast": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 150,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "cool-tone": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 180,
+  },
+  "sepia-effect": {
+    tilt: 0,
+    zoom: 1,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 100,
+    hueRotate: 0,
+  },
+  "dramatic-zoom": {
+    tilt: 0,
+    zoom: 2,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 80,
+    contrast: 120,
+    saturate: 150,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "tilt-left": {
+    tilt: -10,
+    zoom: 1.5,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "tilt-right": {
+    tilt: 10,
+    zoom: 1.5,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+  "blur-zoom": {
+    tilt: 0,
+    zoom: 1.2,
+    shiftX: 0,
+    shiftY: 0,
+    blur: 10,
+    brightness: 100,
+    contrast: 100,
+    saturate: 100,
+    sepia: 0,
+    hueRotate: 0,
+  },
+};

@@ -1,10 +1,4 @@
-export interface BoundaryData {
-    text: string;
-    audio_offset: number;
-    duration: number;
-    text_offset: number;
-    word_length: number;
-}
+import type { BoundaryData } from '@/components/Subtitle/Motion'
 
 export const boundaries:BoundaryData[] = [
     {

@@ -1,8 +1,7 @@
 import React from "react";
-import { AbsoluteFill, Img } from "remotion";
-import { useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
+import { useCurrentFrame, useVideoConfig, interpolate, spring as springFunc } from "remotion";
 
-interface EffectProps {
+export interface EffectProps {
   tilt: number;
   zoom: number;
   shiftX: number;
@@ -15,12 +14,13 @@ interface EffectProps {
   hueRotate: number;
 }
 
-// interface SpringProps {
-//     overshootClamping: number
-//     mass: number
-//     damping: number
-//     stiffness: number
-// }
+export interface SpringProps {
+    overshootClamping?: boolean
+    mass?: number
+    damping?: number
+    stiffness?: number
+    delay?: number
+}
 
 const applyTiltShiftEffect = ({
   tilt,
@@ -41,44 +41,45 @@ const applyTiltShiftEffect = ({
 
 interface TiltShiftEffectProps {
   effect: EffectProps;
-//   spring: SpringProps;
+  spring?: SpringProps;
   children: React.ReactNode;
 }
 
-export const TiltShiftEffect: React.FC<TiltShiftEffectProps> = ({
+export const TiltShiftEffect = ({
   effect,
-//   spring,
+  spring = {},
   children,
-}) => {
+}: TiltShiftEffectProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const springValue = spring({
+  const springValue = springFunc({
     frame,
     fps,
     from: 0,
     to: 1,
+    // [Easing Functions Cheat Sheet](https://easings.net/#)
     // 将动画曲线拉伸到指定的帧数长度
     // durationInFrames
     // 动画在接近结束时被认为完成的阈值，仅在 `durationInFrames` 也指定时生效
     // durationRestThreshold: 1,
-    // delay: 10,
+    delay: spring.delay ?? 0,
     config: {
       // 10
       // 动画的减速程度。
       // 增大阻尼 (damping)，动画会更快地减速并停止；减小阻尼，动画会更长时间地振荡。
-      damping: 10,
+      damping: spring.damping ?? 10,
       //   确定动画是否可以超过目标 (to) 值。
       //   如果设置为 true，动画超出目标值后会立即返回到目标值；如果设置为 false，动画可以超过目标值并逐渐回到目标值。
-      //   overshootClamping: true,
+      overshootClamping: spring.overshootClamping ?? false,
       //   100
       // 弹簧的刚度系数。
       // 增大刚度 (stiffness)，动画的弹性程度会增加；减小刚度，动画会显得更加柔和。
-      stiffness: 10,
+      stiffness: spring.stiffness ?? 10,
       //   1
       // 弹簧的质量。
-      //   减小质量 (mass)，动画速度会变快；增大质量，动画速度会变慢
-      mass: 3,
+      // 减小质量 (mass)，动画速度会变快；增大质量，动画速度会变慢
+      mass: spring.mass ?? 3,
     },
   });
 
@@ -106,159 +107,18 @@ export const TiltShiftEffect: React.FC<TiltShiftEffectProps> = ({
   return <div style={style}>{children}</div>;
 };
 
-export const effects: {[name:string]: EffectProps} = {
-  focusCenter: {
-    tilt: 0,
-    zoom: 1.5,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  leftShiftBlur: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: -50,
-    shiftY: 0,
-    blur: 5,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  rightShiftBrighten: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: 50,
-    shiftY: 0,
-    blur: 0,
-    brightness: 150,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  vintage: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 110,
-    contrast: 90,
-    saturate: 80,
-    sepia: 30,
-    hueRotate: 0,
-  },
-  highContrast: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 150,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  coolTone: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 180,
-  },
-  sepiaEffect: {
-    tilt: 0,
-    zoom: 1,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 100,
-    hueRotate: 0,
-  },
-  dramaticZoom: {
-    tilt: 0,
-    zoom: 2,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 80,
-    contrast: 120,
-    saturate: 150,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  tiltLeft: {
-    tilt: -10,
-    zoom: 1.5,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  tiltRight: {
-    tilt: 10,
-    zoom: 1.5,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 0,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-  blurZoom: {
-    tilt: 0,
-    zoom: 1.2,
-    shiftX: 0,
-    shiftY: 0,
-    blur: 10,
-    brightness: 100,
-    contrast: 100,
-    saturate: 100,
-    sepia: 0,
-    hueRotate: 0,
-  },
-};
+// const TiltShiftEffectApp = (effect: EffectProps) => {
+//   return (
+//     <AbsoluteFill>
+//       <TiltShiftEffect effect={effect}>
+//         <Img
+//           // src={image}
+//           src="/Lighthouse.png"
+//           alt="Tilt Shift"
+//         />
+//       </TiltShiftEffect>
+//     </AbsoluteFill>
+//   );
+// };
 
-// export interface TiltShiftEffectDemoProps {
-//     effect: EffectProps
-// }
-
-type TiltShiftEffectDemoProps = EffectProps
-
-const TiltShiftEffectApp = (effect: EffectProps) => {
-  return (
-    <AbsoluteFill>
-      <TiltShiftEffect effect={effect}>
-        <Img
-          // src={image}
-          src="/Lighthouse.png"
-          alt="Tilt Shift"
-        />
-      </TiltShiftEffect>
-    </AbsoluteFill>
-  );
-};
-
-export default TiltShiftEffectApp;
+// export default TiltShiftEffectApp;

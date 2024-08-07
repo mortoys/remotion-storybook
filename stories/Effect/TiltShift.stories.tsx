@@ -1,16 +1,45 @@
 import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
+import { AbsoluteFill, Img } from "remotion";
 
-import EffectComponent from "@/components/Effect/TiltShiftEffect";
-// import { ImageProps } from "@/components/Slide/Image";
-import type { TiltShiftEffectDemoProps } from "@/components/Effect/TiltShiftEffect";
-import { effects } from "@/components/Effect/TiltShiftEffect";
+import { TiltShiftEffect } from "@/components/Effect/TiltShiftEffect";
+import type {
+  EffectProps,
+  SpringProps,
+} from "@/components/Effect/TiltShiftEffect";
+import { effects } from "@/components/Effect/effects";
+import type { EffectType } from "@/components/Effect/effects";
 
 import Player from "../Player";
 
-const Component = (inputProps: TiltShiftEffectDemoProps) => (
-  <Player component={EffectComponent} inputProps={inputProps} frames={70} />
+type Props = SpringProps & EffectProps;
+const TiltShiftEffectDemo = ({
+  overshootClamping,
+  mass,
+  damping,
+  stiffness,
+  delay,
+  ...props
+}: Props) => {
+  const springConfig: SpringProps = {
+    overshootClamping,
+    mass,
+    damping,
+    stiffness,
+    delay,
+  };
+  return (
+    <AbsoluteFill>
+      <TiltShiftEffect effect={props} spring={springConfig}>
+        <Img src="/Lighthouse.png" alt="Tilt Shift" />
+      </TiltShiftEffect>
+    </AbsoluteFill>
+  );
+};
+
+const Component = (inputProps: Props) => (
+  <Player component={TiltShiftEffectDemo} inputProps={inputProps} frames={70} />
 );
 
 const meta = {
@@ -31,60 +60,65 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const focusCenter: Story = {
-    args: {
-        ... effects[Object.keys(effects)[0]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[0] as EffectType],
+    overshootClamping: false,
+    mass: 3,
+    damping: 10,
+    stiffness: 10,
+    delay: 0,
+  },
+};
 export const leftShiftBlur: Story = {
-    args: {
-        ... effects[Object.keys(effects)[1]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[1] as EffectType],
+  },
+};
 export const rightShiftBrighten: Story = {
-    args: {
-        ... effects[Object.keys(effects)[2]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[2] as EffectType],
+  },
+};
 export const vintage: Story = {
-    args: {
-        ... effects[Object.keys(effects)[3]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[3] as EffectType],
+  },
+};
 export const highContrast: Story = {
-    args: {
-        ... effects[Object.keys(effects)[4]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[4] as EffectType],
+  },
+};
 export const coolTone: Story = {
-    args: {
-        ... effects[Object.keys(effects)[5]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[5] as EffectType],
+  },
+};
 export const sepiaEffect: Story = {
-    args: {
-        ... effects[Object.keys(effects)[6]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[6] as EffectType],
+  },
+};
 export const dramaticZoom: Story = {
-    args: {
-        ... effects[Object.keys(effects)[7]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[7] as EffectType],
+  },
+};
 export const tiltLeft: Story = {
-    args: {
-        ... effects[Object.keys(effects)[8]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[8] as EffectType],
+  },
+};
 export const tiltRight: Story = {
-    args: {
-        ... effects[Object.keys(effects)[9]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[9] as EffectType],
+  },
+};
 export const blurZoom: Story = {
-    args: {
-        ... effects[Object.keys(effects)[10]]
-    }
-}
+  args: {
+    ...effects[Object.keys(effects)[10] as EffectType],
+  },
+};
 // export const S11: Story = {
 //     args: {
 //         ... effects[Object.keys(effects)[11]]

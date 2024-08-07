@@ -2,9 +2,21 @@ import React from 'react';
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import MotionComponent from "@/components/Subtitle/Motion";
-import { MotionProps } from "@/components/Subtitle/Motion";
-// import type { Mode } from "@/components/Subtitle/Text";
+import { Subtitle } from '@/components/Subtitle/Motion'
+import type { MotionProps } from "@/components/Subtitle/Motion";
+import { AbsoluteFill, Img } from "remotion";
+import { boundaries as dataSample } from "./data";
+
+const MotionComponent = ({ data = dataSample }: MotionProps) => {
+  return (
+    <AbsoluteFill
+      className={`h-screen w-screen flex items-center justify-center bg-gray-200`}
+    >
+      <Img src="/Lenna.png" alt="Sample" className="h-full w-full" />
+      <Subtitle data={data} />
+    </AbsoluteFill>
+  );
+};
 
 import Player from "../Player";
 
