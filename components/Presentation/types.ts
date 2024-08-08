@@ -3,6 +3,8 @@ import { BoundaryData } from "@/components/Subtitle/Motion";
 import type { EffectType } from '@/components/Effect/effects'
 import type { TransitionType } from '@/components/Transition/transitions'
 
+import type { SubtitleStyle } from '@/components/Subtitle/Motion'
+
 interface Screen {
   duration: number;
   transition: TransitionType;
@@ -14,4 +16,5 @@ interface Screen {
 
 export type inputProps = {
   slides: Screen[]
+  style: SubtitleStyle
 }

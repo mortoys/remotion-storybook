@@ -16,11 +16,11 @@ import {
   TransitionSeries,
 } from "@remotion/transitions";
 
-import { splitBoundaries } from "@/components/Subtitle/segment";
+// import { splitBoundaries } from "@/components/Subtitle/segment";
 
 type PresentationProps = inputProps;
 
-const Presentation: React.FC<PresentationProps> = ({ slides }) => {
+const Presentation: React.FC<PresentationProps> = ({ slides, style }) => {
   const { width, height } = useVideoConfig();
   const { fps } = useVideoConfig();
   const durationToFrames = (d: number) => {
@@ -84,7 +84,7 @@ const Presentation: React.FC<PresentationProps> = ({ slides }) => {
           from={segOffset[index]}
           durationInFrames={segDuration[index]}
         >
-          <Subtitle data={slide.subtitle} />
+          <Subtitle data={slide.subtitle} style={style}/>
           {/* <Audio src={slide.audio} /> */}
         </Sequence>
       ))}

@@ -55,6 +55,18 @@ export const Cover: Story = {
         image: "",
       },
     ],
+    style: {
+      size: 18,
+      weight: 500,
+      strokeColor: "#444",
+      strokeWidth: 2,
+      position: 'middle',
+      highlight: {
+        color: "#169e00",
+        strokeColor: "#444",
+        strokeWidth: 2
+      }
+    }
   },
 };
 

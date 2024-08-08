@@ -8,6 +8,8 @@ import { splitBoundaries } from "./segment";
 import type { Boundary } from "./segment";
 import { TextBox, Text } from "./Text";
 
+import type { TextBoxStyleProps, TextStyleProps } from './Text'
+
 export interface BoundaryData {
   text: string;
   audio_offset: number;
@@ -16,18 +18,26 @@ export interface BoundaryData {
   word_length?: number;
 }
 
+export interface SubtitleStyle extends TextBoxStyleProps {
+  highlight?: TextStyleProps
+}
+
 export interface MotionProps {
   data?: BoundaryData[];
+  style?: SubtitleStyle;
 }
 
 export interface SubtitleProps {
   data: Boundary[];
+  style?: SubtitleStyle;
 }
 
 let moving = false;
 
-export const SubtitleSequence = ({ data = [] }: SubtitleProps) => {
+export const SubtitleSequence = ({ data = [], style = {} }: SubtitleProps) => {
   const { fps } = useVideoConfig();
+
+  const { highlight = {}, ... textStyle } = style
 
   return data.map(({ duration, offset }) => (
     <Sequence
@@ -35,7 +45,7 @@ export const SubtitleSequence = ({ data = [] }: SubtitleProps) => {
       durationInFrames={(duration * fps) / 1e3}
       key={offset}
     >
-      <TextBox size={18} weight={500} strokeColor="black" strokeWidth={1}>
+      <TextBox { ... textStyle }>
         {data
           .filter(({ text, duration: segDuration, offset: segOffset }) =>
             moving ? segOffset + segDuration <= offset + duration : true
@@ -46,16 +56,13 @@ export const SubtitleSequence = ({ data = [] }: SubtitleProps) => {
               <Text
                 text={text}
                 key={segOffset}
-                color="#169e00"
-                strokeColor="#444"
-                strokeWidth={2}
+                { ... highlight }
               />
             ) : (
               <Text
                 text={text}
                 key={segOffset}
-                strokeColor="#444"
-                strokeWidth={1}
+                { ... textStyle }
               />
             )
           )}
@@ -64,7 +71,7 @@ export const SubtitleSequence = ({ data = [] }: SubtitleProps) => {
   ));
 };
 
-export const Subtitle = ({ data = [] }: MotionProps) => {
+export const Subtitle = ({ data = [], style }: MotionProps) => {
   const { fps } = useVideoConfig();
   const screens = useMemo(() => splitBoundaries(data), [data])
 
@@ -74,7 +81,7 @@ export const Subtitle = ({ data = [] }: MotionProps) => {
       durationInFrames={(duration * fps) / 1e3}
       key={audio_offset}
     >
-      <SubtitleSequence data={groups}></SubtitleSequence>
+      <SubtitleSequence data={groups} style={style}></SubtitleSequence>
     </Sequence>
   ));
 };

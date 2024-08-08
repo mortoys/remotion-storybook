@@ -1,7 +1,7 @@
 // https://www.remotion.dev/docs/use-video-config
 // import { useVideoConfig } from "remotion";
 import React, { useLayoutEffect, useState, useRef } from "react";
-import { AbsoluteFill, Img } from "remotion";
+import { AbsoluteFill } from "remotion";
 import { cn } from "../../lib/utils";
 
 import loadFonts from "./loadFont";
@@ -10,7 +10,8 @@ loadFonts().then(() => {
   console.log("Font loaded!");
 });
 
-const fontFamily = '"NotoSansSC", "Poppins"';
+const fontFamily = '"Poppins", "NotoSansSC"';
+// const fontFamily = '"NotoSansSC", "Poppins"';
 // const fontFamily = '"Poppins"';
 
 // 加粗 斜体 颜色 大小 文字描边的粗细 文字描边的颜色
@@ -22,13 +23,15 @@ export interface TextStyleProps {
   color?: string;
   strokeWidth?: number;
   strokeColor?: string;
+  size?: number;
 }
 
 export type TextElementProps = TextStyleProps & { text:string }
 
-export type TextBoxProps = TextStyleProps & {
-  size?: number;
+export type TextBoxStyleProps = TextStyleProps & {
   position?: "top" | "middle" | "bottom";
+};
+export type TextBoxProps = TextBoxStyleProps & {
   children: React.ReactElement<typeof Text> | React.ReactElement<typeof Text>[];
 };
 
@@ -119,26 +122,11 @@ export const TextBox = ({
       style={{
         ...textStyle,
         height: textHeight,
+        paddingLeft: '10px',
+        paddingRight: '10px'
       }}
     >
       <div ref={textRef}>{children}</div>
     </AbsoluteFill>
   );
 };
-
-const TextComponent = (props: TextBoxProps & TextElementProps) => {
-  return (
-    <AbsoluteFill
-      className={`h-screen w-screen flex items-center justify-center bg-gray-200`}
-    >
-      <Img src="/Lenna.png" alt="Sample" className="h-full w-full" />
-      <TextBox {...props}>
-        <Text {...props} />
-        <Text {...props} />
-        <Text {...props} />
-      </TextBox>
-    </AbsoluteFill>
-  );
-};
-
-export default TextComponent;
