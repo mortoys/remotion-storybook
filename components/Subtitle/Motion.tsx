@@ -1,6 +1,6 @@
 // https://www.remotion.dev/docs/use-video-config
 // import { useVideoConfig } from "remotion";
-import React from "react";
+import React, { useMemo } from "react";
 
 import { Sequence, useVideoConfig } from "remotion";
 
@@ -12,8 +12,8 @@ export interface BoundaryData {
   text: string;
   audio_offset: number;
   duration: number;
-  text_offset: number;
-  word_length: number;
+  text_offset?: number;
+  word_length?: number;
 }
 
 export interface MotionProps {
@@ -66,7 +66,7 @@ export const SubtitleSequence = ({ data = [] }: SubtitleProps) => {
 
 export const Subtitle = ({ data = [] }: MotionProps) => {
   const { fps } = useVideoConfig();
-  const screens = splitBoundaries(data);
+  const screens = useMemo(() => splitBoundaries(data), [data])
 
   return screens.map(({ groups, duration, audio_offset }) => (
     <Sequence
